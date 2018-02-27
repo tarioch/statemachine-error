@@ -3,6 +3,7 @@ package smerror.bar;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
@@ -17,9 +18,12 @@ import smerror.foo.FooState;
 @EnableStateMachineFactory(name = "Bar", contextEvents = false)
 public class BarStateMachineConfig extends StateMachineConfigurerAdapter<BarState, BarEvent> {
 
+    @Autowired
     public BarStateMachineConfig(StateMachineFactory<FooState, FooEvent> fooStateMachineFactory) {
-        // TODO Auto-generated constructor stub
     }
+
+    //    @Autowired
+    //    private StateMachineFactory<FooState, FooEvent> fooStateMachineFactory;
 
     @Override
     public void configure(StateMachineStateConfigurer<BarState, BarEvent> states) throws Exception {
